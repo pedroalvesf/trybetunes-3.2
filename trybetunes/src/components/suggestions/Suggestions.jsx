@@ -1,10 +1,10 @@
-import sugges from './SuggestionData';
+import data from '../../assets/Data';
 
 function Suggestions () {
-
     return (
         <div className="container-suggestions
-        bg-black/10
+        bg-gradient-to-b from-[#1e1e1e] to-[#121212]
+        pt-10
 
         ">
             <h1
@@ -12,7 +12,7 @@ function Suggestions () {
             font-bold
             text-2xl
             text-center
-
+            text-white
             "
             >Some suggestions created just for you!</h1>
             <div className="container-suggestions-cards
@@ -21,9 +21,10 @@ function Suggestions () {
                 gap-3
                 md:w-9/12
                 m-auto
-                pb-20
+                pb-14
+                text-white
             ">
-                {sugges.map((suggestion, index) => (
+                {data.SuggestionData.map((suggestion, index) => (
                     <div className="suggestion-card
                     bg-black/10
                     w-72
@@ -31,6 +32,10 @@ function Suggestions () {
                     flex
                     flex-row
                     gap-5
+                    rounded-lg
+                    hover:bg-black/90
+                    hover:font-bold
+                    cursor-pointer
                     " key={index}>
                     <p
                         className="

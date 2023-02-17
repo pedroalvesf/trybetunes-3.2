@@ -8,20 +8,21 @@ function AlbumCard({ album, onClick, id }) {
 	return (
 		<div
 			className="album-card
-        w-52
-        h-64
-        m-auto
-        text-center
-        font
-        bg-black/40
-        rounded-lg
-        shadow-2xl
-    "
+         w-52
+         h-64
+         m-auto
+         text-center
+         font
+         bg-[#181818]
+         transition duration-300
+         hover:bg-[rgb(40,40,40)]
+         rounded-lg
+         shadow-2xl
+         "
 			onClick={onClick}
 			id={id}
 		>
-			<div className="album-card-image
-        ">
+			<div className="album-card-image">
 				<img
 					src={album.artworkUrl100}
 					alt={album.artistName}
@@ -32,13 +33,14 @@ function AlbumCard({ album, onClick, id }) {
             "
 				/>
 			</div>
-			<div className="album-card-info
-        text-white
-        gap-2
-        h-20
-        text-sm
-        rounded-b-lg
-        px-4
+			<div className="
+         album-card-info
+         text-white
+         gap-2
+         h-20
+         text-sm
+         rounded-b-lg
+         px-4
             ">
 				<p className="
             text-white

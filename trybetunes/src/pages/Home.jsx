@@ -2,26 +2,16 @@ import AlbumCard from "../components/album/AlbumCard";
 import { useEffect, useState } from "react";
 import searchAlbumsAPI from "../services/searchAlbumApi";
 import Suggestions from "../components/suggestions/Suggestions";
+import Footer from "../components/footer/Footer";
+import FavoritesAlbums from "../components/favorits/favoritesAlbum";
 
 function Home ({ state }) {
-
-    const [musics, setMusics] = useState([]);
-    const [artistName, setArtistName] = useState('');
-
-    const getAlbum = async () => {
-        const response = await searchAlbumsAPI({artistName});
-        setMusics(response);
-    }
-    useEffect(() => {
-        getAlbum();
-    }, []);
-
-    console.log(state)
     return (
 
         <div>
             <div className="container-home
-            pt-20
+            bg-[#101010]/90
+            divide-y divide-gray-400
             ">
                 <Suggestions />
                 <div className="container-result-artist
@@ -37,10 +27,18 @@ function Home ({ state }) {
                         key={ index }
                         album={ music }
                         />
-
                     ))}
                 </div>
+                    <div className="                grid
+                grid-auto-fit-xs
+                w-screen
+                gap-2
+                md:w-11/12
+                m-auto">
+                        <FavoritesAlbums />
+                    </div>
                 </div>
+                <Footer />
             </div>
     );
 }

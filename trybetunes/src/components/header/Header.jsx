@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import searchAlbumsAPI from "/Users/pedro.alves.hf/Documents/trybetunes-3.2/trybetunes/src/services/searchAlbumApi.js";
 import { useEffect, useState } from "react";
 
-function Header({ state, setState}) {
+function Header({ setState }) {
 
   const [artistName, setArtistName] = useState('');
   const handleChange = ({ target }) => {
@@ -24,22 +24,25 @@ function Header({ state, setState}) {
       flex
       flex-row
       min-w-lg
+      bg-[#101010]
+      text-white/80
       '>
-        <div className="navbar bg-base-100">
-          <div className="navbar-start">
+        <div className="navbar flex justify-e">
+          <div className="justify-center navbar-start">
             <div className="dropdown">
-              <label tabIndex={0} className="btn
-      btn-ghost
-      max-w-min
-      ">
+              <label tabIndex={0}
+                className="btn
+                btn-ghost
+                max-w-min
+                ">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
               </label>
-              <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+              <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52 bg-[#101010]">
                   {SidebarData.map((item, index) => {
                     return (
                       <li key={index} className="
                       p-0
-                      hover:bg-base-100
+                      hover:bg-base
                       " >
                         <Link to={item.path}
                         className='
@@ -61,10 +64,10 @@ function Header({ state, setState}) {
 
           </div>
           <div className="
-        navbar bg-base-100
+        navbar
         flex
         flex-row
-        justify-between
+        justify-evenly
         ">
             <div className="
             navbar-center
@@ -75,10 +78,15 @@ function Header({ state, setState}) {
             flex
             flex-row
             ">
-              <div className="form-control">
+              <div className="form-control
+              ">
                 <input type="text" placeholder="Search"
                 name="artistName"
-                className="input input-bordered
+                className="
+                text-white
+                input
+                input-bordered
+                bg-black/50
                 "
                 onChange={handleChange}
                 value={artistName}
@@ -95,7 +103,7 @@ function Header({ state, setState}) {
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                   <div className="w-16 rounded-full">
                     <img src={avatarTest}
-                    className='hidden md:flex
+                    className='
                     '
                     />
                   </div>
