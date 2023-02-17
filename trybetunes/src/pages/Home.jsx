@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import searchAlbumsAPI from "../services/searchAlbumApi";
 import Suggestions from "../components/suggestions/Suggestions";
 
-function Home () {
+function Home ({ state }) {
 
     const [musics, setMusics] = useState([]);
     const [artistName, setArtistName] = useState('');
@@ -16,8 +16,7 @@ function Home () {
         getAlbum();
     }, []);
 
-
-    console.log(musics)
+    console.log(state)
     return (
 
         <div>
@@ -33,7 +32,7 @@ function Home () {
                 md:w-11/12
                 m-auto
                 ">
-                    {musics.map((music, index) => (
+                    {state.map((music, index) => (
                         <AlbumCard
                         key={ index }
                         album={ music }

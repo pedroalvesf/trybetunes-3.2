@@ -4,19 +4,18 @@ import { Link } from 'react-router-dom';
 import searchAlbumsAPI from "/Users/pedro.alves.hf/Documents/trybetunes-3.2/trybetunes/src/services/searchAlbumApi.js";
 import { useEffect, useState } from "react";
 
-function Header({ album }) {
+function Header({ state, setState}) {
 
-  const [state, setState] = useState({});
-
+  const [artistName, setArtistName] = useState('');
   const handleChange = ({ target }) => {
-    const { name, value } = target;
-    setState(prevState => ({ ...prevState, [name]: value }));
+    setArtistName(target.value);
   };
 
   const handleClick = async (x) => {
     x.preventDefault();
-    const newArtist = await searchAlbumsAPI(state);
-    return newArtist;
+    const newArtist = await searchAlbumsAPI(artistName);
+    setState(newArtist);
+    setArtistName('');
   };
 
   return (
@@ -82,6 +81,7 @@ function Header({ album }) {
                 className="input input-bordered
                 "
                 onChange={handleChange}
+                value={artistName}
                 />
               </div>
               <button
