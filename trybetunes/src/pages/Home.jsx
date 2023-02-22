@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import searchAlbumsAPI from "../services/searchAlbumApi";
 import Suggestions from "../components/suggestions/Suggestions";
 import Footer from "../components/footer/Footer";
-import FavoritesAlbums from "../components/favorits/favoritesAlbum";
+import FavoritesAlbums from "../components/favorits/FavoritesAlbum";
 
 function Home ({ state }) {
     return (

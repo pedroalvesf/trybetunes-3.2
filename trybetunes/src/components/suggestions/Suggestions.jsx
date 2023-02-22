@@ -1,4 +1,5 @@
 import data from '../../assets/Data';
+import { Link } from 'react-router-dom';
 
 function Suggestions () {
     return (
@@ -25,6 +26,7 @@ function Suggestions () {
                 text-white
             ">
                 {data.SuggestionData.map((suggestion, index) => (
+                    <Link key={index} to={`/album/${suggestion.collectionId}`}>
                     <div className="suggestion-card
                     bg-black/10
                     w-72
@@ -36,7 +38,7 @@ function Suggestions () {
                     hover:bg-black/90
                     hover:font-bold
                     cursor-pointer
-                    " key={index}>
+                    " >
                     <p
                         className="
                         mt-5
@@ -58,7 +60,9 @@ function Suggestions () {
                             />
                         </div>
                     </div>
-                ))}
+                    </Link>
+                ))
+                }
             </div>
         </div>
 

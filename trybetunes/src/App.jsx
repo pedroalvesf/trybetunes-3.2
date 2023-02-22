@@ -4,6 +4,7 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import { useState } from 'react'
+import MusicsAlbum from './pages/MusicsAlbum'
 function App() {
 
   const [state, setState] = useState([]);
@@ -13,6 +14,7 @@ function App() {
           <Header setState={setState}/>
           <Routes>
             <Route path="/" element={<Home state={state} />} />
+            <Route path="/album/:id" element={<MusicsAlbum />} />
           </Routes>
         </BrowserRouter>
   )
