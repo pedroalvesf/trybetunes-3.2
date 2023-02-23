@@ -57,6 +57,7 @@ function favoritesAlbums() {
         modules={[Pagination]}
       >{Data.FavoritesData.map((album, index) => (
         <SwiperSlide
+        key={ index }
         className="
         w-52
         "

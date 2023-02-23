@@ -1,11 +1,24 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import getMusics from "../services/musicsApi";
+import ColorThief from "colorthief";
 
 function MusicsAlbum(props) {
     const { id } = useParams();
-
     const [musics, setMusics] = useState([]);
+    const [backgroundColor, setBackgroundColor] = useState("#101010");
+
+    var img = new Image();
+    if(musics[0]?.artworkUrl100 && backgroundColor === "#101010") {
+        img.onload = function () {
+        var colorThief = new ColorThief();
+        setBackgroundColor(colorThief.getColor(img));
+        };
+        img.crossOrigin = 'Anonymous';
+        img.src = musics[0].artworkUrl100;
+    }
+
+console.log(backgroundColor);
     const getMcs = async () => {
         const musics2 = await getMusics(id);
         setMusics(musics2);
@@ -14,27 +27,48 @@ function MusicsAlbum(props) {
     useEffect(() => {
         getMcs()
     }, [])
+    
+    // const colorThief = new ColorThief();
+    // const img = window.document.querySelectorAll("img")[1];
+    //     if (img?.complete) {
+    //     colorThief.getColor(img);
+    //     console.log(colorThief.getColor(img))
+    //     } else {
+    //         image.addEventListener('load', function() {
+    //         colorThief.getColor(img);
+    //         });
+    //     }
+
 
     return (
             <div
             className="
             bg-[#101010]/90
-            h-screen
+            min-h-screen
+            m-auto
             "
             >
-                <div className="container-album-info
-                grid
-                grid-cols-2
-                gap-4
-                w-9/12
+                <div
+                style={{ backgroundImage: `linear-gradient(0deg, rgba(16,16,16, 0.9) 0%, rgb(${backgroundColor}) 100%)`
+                } }
+                >
+                    
+                <div
+                className="container-album-info
+                flex
+                flex-row
+                max-w-5xl
                 m-auto
+                gap-4
                 pt-10
+                pb-5
                 ">
                     <div className="container-album-image">
                         <img
                         src={musics[0]?.artworkUrl100}
                         className="
                         w-44
+                        ml-10
                         "/>
                     </div>
                     <div className="container-album-text
@@ -55,7 +89,10 @@ function MusicsAlbum(props) {
                         <p>{musics[0]?.artistName} - {musics[0]?.trackCount}</p>
                     </div>
                 </div>
+                </div>
                 <div className="container-album-musics
+                max-w-5xl
+                m-auto
                 "
                 >
                     <div className="container-album-musics-header
@@ -70,6 +107,7 @@ function MusicsAlbum(props) {
                     </div>
                     {musics.slice(1).map((music, index) =>(
                         <div
+                        key={index}
                         className="flex
                         flex-row
                         pl-10
@@ -90,6 +128,9 @@ function MusicsAlbum(props) {
                             "
                             >
                             <p
+                            className="truncate
+                            max-w-[200px]
+                            "
                             >{music.trackName}</p>
                             <p className="text-gray-500
                             text-xs
