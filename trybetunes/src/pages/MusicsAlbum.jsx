@@ -24,6 +24,7 @@ function MusicsAlbum(props) {
                 w-5/12
                 m-auto
                 pt-10
+
                 ">
                     <div className="container-album-image">
                         <img
@@ -46,11 +47,59 @@ function MusicsAlbum(props) {
                         sm:text-2xl
                         "
                         >{musics[0].collectionName}</h1>
-                        <p>{musics[0].artistName} - {musics[0].trackCount} </p>
+                        <p>{musics[0].artistName} - {musics[0].trackCount}</p>
                     </div>
                 </div>
-                <div className="container-album-musics"
+                <div className="container-album-musics
+                "
                 >
+                    <div className="container-album-musics-header
+                    flex
+                    flex-row
+                    gap-5
+                    pl-10
+                    pr-5
+                    ">
+                        <p>#</p>
+                        <p>Title</p>
+                    </div>
+                    {musics.slice(1).map((music, index) =>(
+                        <div
+                        className="flex
+                        flex-row
+                        pl-10
+                        pr-5
+                        gap-5
+                        text-white
+                        "
+                        >
+                            <p
+                            className="
+                            "
+                            >{index > 8 ? index + 1 : '0' + (index + 1)}</p>
+                            <div
+                            className="flex
+                            flex-col
+                            flex-auto
+                            "
+                            >
+                            <p
+                            >{music.trackName}</p>
+                            <p className="text-gray-500
+                            text-xs
+                            ">{music.artistName}</p>
+                            </div>
+                            <audio
+                            className="w-8/12
+                            bg-[#181818]
+                            "
+                            src={music.previewUrl} controls>
+                                <track kind="captions" />
+                                <code>audio</code>
+                            </audio>
+                        </div>
+                    ))
+                    }
                 </div>
             </div>
     )
