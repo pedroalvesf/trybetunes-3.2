@@ -69,7 +69,6 @@ function favoritesAlbums() {
         />
         </SwiperSlide>
     ))}</Swiper>
-
             </div>
         </div>
     );

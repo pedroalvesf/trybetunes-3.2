@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import getMusics from "../services/musicsApi";
 import ColorThief from "colorthief";
+import AlbumSimilar from "../components/album/AlbumSimilar";
+
 
 function MusicsAlbum(props) {
     const { id } = useParams();
@@ -27,18 +29,6 @@ console.log(backgroundColor);
     useEffect(() => {
         getMcs()
     }, [])
-    
-    // const colorThief = new ColorThief();
-    // const img = window.document.querySelectorAll("img")[1];
-    //     if (img?.complete) {
-    //     colorThief.getColor(img);
-    //     console.log(colorThief.getColor(img))
-    //     } else {
-    //         image.addEventListener('load', function() {
-    //         colorThief.getColor(img);
-    //         });
-    //     }
-
 
     return (
             <div
@@ -52,7 +42,6 @@ console.log(backgroundColor);
                 style={{ backgroundImage: `linear-gradient(0deg, rgba(16,16,16, 0.9) 0%, rgb(${backgroundColor}) 100%)`
                 } }
                 >
-                    
                 <div
                 className="container-album-info
                 flex

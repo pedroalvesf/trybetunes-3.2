@@ -14,7 +14,8 @@ function App() {
           <Header setState={setState}/>
           <Routes>
             <Route path="/" element={<Home state={state} />} />
-            <Route path="/album/:id" element={<MusicsAlbum />} />
+            <Route path="/album/:id" element={<MusicsAlbum state={state}/>} />
+            <Route path="album/:id" element={<MusicsAlbum />} />
           </Routes>
         </BrowserRouter>
   )
