@@ -16,21 +16,25 @@ function MusicsAlbum(props) {
     }, [])
 
     return (
-            <div>
+            <div
+            className="
+            bg-[#101010]/90
+            h-screen
+            "
+            >
                 <div className="container-album-info
                 grid
                 grid-cols-2
                 gap-4
-                w-5/12
+                w-9/12
                 m-auto
                 pt-10
-
                 ">
                     <div className="container-album-image">
                         <img
-                        src={musics[0].artworkUrl100}
+                        src={musics[0]?.artworkUrl100}
                         className="
-                        w-60
+                        w-44
                         "/>
                     </div>
                     <div className="container-album-text
@@ -38,6 +42,7 @@ function MusicsAlbum(props) {
                     flex
                     flex-col
                     justify-evenly
+                    flex-start
                     ">
                         <p
                         >Album</p>
@@ -46,8 +51,8 @@ function MusicsAlbum(props) {
                         md:text-4xl
                         sm:text-2xl
                         "
-                        >{musics[0].collectionName}</h1>
-                        <p>{musics[0].artistName} - {musics[0].trackCount}</p>
+                        >{musics[0]?.collectionName}</h1>
+                        <p>{musics[0]?.artistName} - {musics[0]?.trackCount}</p>
                     </div>
                 </div>
                 <div className="container-album-musics
@@ -71,10 +76,11 @@ function MusicsAlbum(props) {
                         pr-5
                         gap-5
                         text-white
+                        hover:bg-[#181818]/100
                         "
                         >
                             <p
-                            className="
+                            className="font-mono
                             "
                             >{index > 8 ? index + 1 : '0' + (index + 1)}</p>
                             <div
@@ -91,7 +97,8 @@ function MusicsAlbum(props) {
                             </div>
                             <audio
                             className="w-8/12
-                            bg-[#181818]
+                            bg-black
+                            hover:bg-[#181818]/100
                             "
                             src={music.previewUrl} controls>
                                 <track kind="captions" />

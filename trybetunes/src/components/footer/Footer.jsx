@@ -2,11 +2,10 @@
 function Footer() {
     return (
         <div className="  ">
-
-            <footer className="place-items-center footer
+            <footer className="items-start footer
             p-10
+            justify-evenly
             bg-[#101010]/90 text-base-content
-            
             ">
                 <div>
                     <span className="footer-title">Company</span>

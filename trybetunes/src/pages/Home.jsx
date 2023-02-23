@@ -11,9 +11,14 @@ function Home ({ state }) {
         <div>
             <div className="container-home
             bg-[#101010]/90
-            divide-y divide-gray-400
             ">
                 <Suggestions />
+                <hr className="
+                mb-6
+                mx-auto
+                w-11/12
+                border-gray-600
+                "/>
                 <div className="container-result-artist
                 grid
                 grid-auto-fit-xs
