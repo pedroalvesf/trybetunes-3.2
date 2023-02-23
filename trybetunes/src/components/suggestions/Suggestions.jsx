@@ -24,6 +24,7 @@ function Suggestions () {
                 m-auto
                 pb-14
                 text-white
+                lg:grid-cols-3
             ">
                 {data.SuggestionData.map((suggestion, index) => (
                     <Link key={index} to={`/album/${suggestion.collectionId}`}>
@@ -38,6 +39,7 @@ function Suggestions () {
                     hover:bg-black/90
                     hover:font-bold
                     cursor-pointer
+                    m-auto
                     " >
                     <p
                         className="
