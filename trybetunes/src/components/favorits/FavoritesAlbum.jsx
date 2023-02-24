@@ -42,8 +42,9 @@ function favoritesAlbums() {
                 className="
                 w-screen
                 gap-2
-                md:w-11/12
-                m-auto"
+                m-auto
+                max-w-screen
+                "
 
         slidesPerView={"auto"}
         spaceBetween={10}

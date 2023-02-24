@@ -196,5 +196,53 @@ const Data = {
         trackCount: 2,
     }
 ],
+    SimilarData: [
+        {
+            artistId: 462715,
+            artistName: "System Of A Down",
+            artworkUrl100: "https://is2-ssl.mzstatic.com/image/thumb/Music125/v4/79/03/76/79037637-7c7e-ded5-879e-230c6aa3fe65/827969387122.jpg/100x100bb.jpg",
+            collectionId: 187472331,
+            collectionName: "Mezmerize",
+            collectionPrice: 9.99,
+            releaseDate: "2005-05-17T07:00:00Z",
+            trackCount: 11,
+        },
+        {
+            artistId: 462715,
+            artistName: "System Of A Down",
+            artworkUrl100: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/16/af/a1/16afa1d6-ebc7-a213-da7c-1b46076ff1b7/dj.yuooiixy.jpg/100x100bb.jpg",
+            collectionId: 205999137,
+            collectionName: "System Of A Down (Deluxe Edition)",
+            collectionPrice: 10.99,
+            primaryGenreName: "Hard Rock",
+            releaseDate: "1999-01-29T08:00:00Z",
+            trackCount: 17,
+        },
+        {
+            artistId: 1093360,
+            artistName: "Muse",
+            artworkUrl100: "https://is5-ssl.mzstatic.com/image/thumb/Music124/v4/da/93/b9/da93b9d0-5a55-7553-6a33-fbb93695ad41/825646557646.jpg/100x100bb.jpg",
+            collectionId: 551989940,
+            collectionName: "The 2nd Law",
+            collectionPrice: 9.99,
+            collectionType: "Album",
+            primaryGenreName: "Alternative",
+            releaseDate: "2012-10-01T07:00:00Z",
+            trackCount: 13,
+        },
+        {
+            artistId: 6906197,
+            artistName: "Foo Fighters",
+            artistViewUrl: "https://music.apple.com/us/artist/foo-fighters/6906197?uo=4",
+            artworkUrl100: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/48/e2/f8/48e2f856-3fbe-9671-d5a7-72476ad1dcf0/828765555524.jpg/100x100bb.jpg",
+            collectionId: 538257183,
+            collectionName: "One By One (Deluxe Edition)",
+            collectionPrice: 9.99,
+            collectionType: "Album",
+            primaryGenreName: "Alternative",
+            releaseDate: "2002-10-22T07:00:00Z",
+            trackCount: 17,
+        }
+    ],
 };
 export default Data;
