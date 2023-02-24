@@ -1,17 +1,25 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import getMusics from "../services/musicsApi";
 import ColorThief from "colorthief";
-import AlbumSimilar from "../components/album/AlbumSimilar";
-
+import Data from "../assets/Data";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Navigation, Pagination } from "swiper";
+import { useNavigate } from "react-router-dom";
+import AlbumCard from "../components/album/AlbumCard";
 
 function MusicsAlbum(props) {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [musics, setMusics] = useState([]);
+
     const [backgroundColor, setBackgroundColor] = useState("#101010");
 
     var img = new Image();
-    if(musics[0]?.artworkUrl100 && backgroundColor === "#101010") {
+    if(musics[0]?.artworkUrl100 ) {
         img.onload = function () {
         var colorThief = new ColorThief();
         setBackgroundColor(colorThief.getColor(img));
@@ -24,24 +32,27 @@ function MusicsAlbum(props) {
         const musics2 = await getMusics(id);
         setMusics(musics2);
     }
+    console.log(id)
     useEffect(() => {
         getMcs()
-    }, [])
+    }, [id])
 
     return (
+        <>
             <div
             className="
+            pb-20
             bg-[#101010]/90
-            min-h-screen
             m-auto
             "
             >
                 <div
                 style={{ backgroundImage: `linear-gradient(0deg, rgba(16,16,16, 0.9) 0%, rgb(${backgroundColor}) 100%)`
-                } }
-                >
+            } }
+            >
                 <div
-                className="container-album-info
+                className="
+                container-album-info
                 flex
                 flex-row
                 max-w-5xl
@@ -50,7 +61,8 @@ function MusicsAlbum(props) {
                 pt-10
                 pb-5
                 ">
-                    <div className="container-album-image">
+                    <div className="
+                    container-album-image">
                         <img
                         src={musics[0]?.artworkUrl100}
                         className="
@@ -58,7 +70,8 @@ function MusicsAlbum(props) {
                         ml-10
                         "/>
                     </div>
-                    <div className="container-album-text
+                    <div className="
+                    container-album-text
                     text-white
                     flex
                     flex-col
@@ -77,12 +90,14 @@ function MusicsAlbum(props) {
                     </div>
                 </div>
                 </div>
-                <div className="container-album-musics
+                <div className="
+                container-album-musics
                 max-w-5xl
                 m-auto
                 "
                 >
-                    <div className="container-album-musics-header
+                    <div className="
+                    container-album-musics-header
                     flex
                     flex-row
                     gap-5
@@ -95,7 +110,8 @@ function MusicsAlbum(props) {
                     {musics.slice(1).map((music, index) =>(
                         <div
                         key={index}
-                        className="flex
+                        className="
+                        flex
                         flex-row
                         pl-10
                         pr-5
@@ -105,26 +121,31 @@ function MusicsAlbum(props) {
                         "
                         >
                             <p
-                            className="font-mono
+                            className="
+                            font-mono
                             "
                             >{index > 8 ? index + 1 : '0' + (index + 1)}</p>
                             <div
-                            className="flex
+                            className="
+                            flex
                             flex-col
                             flex-auto
                             "
                             >
                             <p
-                            className="truncate
+                            className="
+                            truncate
                             max-w-[200px]
                             "
                             >{music.trackName}</p>
-                            <p className="text-gray-500
+                            <p className="
+                            text-gray-500
                             text-xs
                             ">{music.artistName}</p>
                             </div>
                             <audio
-                            className="w-8/12
+                            className="
+                            w-8/12
                             bg-black
                             hover:bg-[#181818]/100
                             "
@@ -134,9 +155,56 @@ function MusicsAlbum(props) {
                             </audio>
                         </div>
                     ))
-                    }
+                }
                 </div>
+
             </div>
+            <p
+            className="text-white
+            flex
+            justify-center
+            text-2xl
+            m-10
+            "
+            >Similar albums to you! </p>
+            <div
+            className="
+            mb-10
+            h-80
+            max-w-5xl
+            m-auto
+            "
+            >
+            <Swiper
+            className="
+            cursor-drag
+            "
+            slidesPerView={3}
+            spaceBetween={1}
+            pagination={{
+            clickable: true,
+            }}
+            navigation={false}
+            style={{ "--swiper-navigation-color": "#fff", "--swiper-pagination-color": "#fff" }}
+            modules={[Pagination]}
+            >
+            {Data.SimilarData.map((album, index) => (
+                <SwiperSlide
+                key={album.collectionId + index}
+                className="
+                gap-5
+                w-48
+                "
+                >
+                <AlbumCard
+                key={ index }
+                album={album}
+                />
+                </SwiperSlide>
+            ))}
+            </Swiper>
+            </div>
+        </>
     )
 }
 

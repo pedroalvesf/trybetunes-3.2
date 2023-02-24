@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom';
+import Data from '../../assets/Data';
 
 function AlbumSimilar({album, onClick, id}) {
-
+    const handleChange = ({target}) => {
+        console.log(target.value);
+    };
     return (
         <Link to={`/album/${album.collectionId}`}>
-            <div className="album-card-similar
+            <div className="
+            album-card-similar
             w-52
             h-64
             m-auto
@@ -19,11 +23,13 @@ function AlbumSimilar({album, onClick, id}) {
             onClick={onClick}
             id={id}
             >
-            <div className="album-card-image">
+            <div className="
+            album-card-image">
             <img
                 src={album.artworkUrl100}
                 alt={album.artistName}
-                className="w-full
+                className="
+            w-full
             p-4
             h-48
             rounded-3xl
@@ -38,17 +44,17 @@ function AlbumSimilar({album, onClick, id}) {
             text-sm
             rounded-b-lg
             px-4
-               ">
-               <p className="
-               text-white
-               truncate
-               ">{album.artistName}</p>
-               <p className="
-               text-white
-               truncate
-               ">{album.collectionName}</p>
+            ">
+            <p className="
+            text-white
+            truncate
+            ">{album.artistName}</p>
+            <p className="
+            text-white
+            truncate
+            ">{album.collectionName}</p>
             </div>
-         </div>
+        </div>
         </Link>
     )
 };

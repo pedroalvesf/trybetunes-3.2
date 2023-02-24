@@ -38,29 +38,30 @@ function favoritesAlbums() {
             </div>
                 <div className="favorites-albums
                 ">
-                    <Swiper
+                <Swiper
                 className="
-                w-screen
                 gap-2
                 m-auto
-                max-w-screen
+                max-w-9/12
+                flex
                 "
-
         slidesPerView={"auto"}
-        spaceBetween={10}
+        spaceBetween={20}
         pagination={{
-          clickable: true,
+        clickable: true,
         }}
         navigation={false}
         // want to give a padding to the navigation buttons
         style={{
         "--swiper-pagination-color": "#1e1e",}}
         modules={[Pagination]}
-      >{Data.FavoritesData.map((album, index) => (
+        >{Data.FavoritesData.map((album, index) => (
         <SwiperSlide
         key={ index }
         className="
         w-52
+        flex
+        gap-2
         "
         >
 
@@ -69,7 +70,8 @@ function favoritesAlbums() {
         album={ album }
         />
         </SwiperSlide>
-    ))}</Swiper>
+    ))}
+    </Swiper>
             </div>
         </div>
     );

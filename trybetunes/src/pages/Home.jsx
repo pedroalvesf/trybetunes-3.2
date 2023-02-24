@@ -15,13 +15,14 @@ function Home () {
                 w-11/12
                 border-gray-600
                 "/>
-                    <div className="                grid
+                    <div className="
+                grid
                 grid-auto-fit-xs
                 w-screen
                 gap-2
                 md:w-11/12
                 m-auto">
-                        <FavoritesAlbums />
+                    <FavoritesAlbums />
                     </div>
                 </div>
                 <Footer />

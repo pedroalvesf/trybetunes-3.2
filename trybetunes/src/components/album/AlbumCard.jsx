@@ -28,11 +28,12 @@ function AlbumCard({ album, onClick, id }) {
                <img
                   src={album.artworkUrl100}
                   alt={album.artistName}
-                  className="w-full
-                           p-4
-                           h-48
-                           rounded-3xl
-                           "
+                  className="
+                  w-full
+                  p-4
+                  h-48
+                  rounded-3xl
+                  "
                />
             </div>
             <div className="

@@ -1,6 +1,4 @@
-import Header from "../components/header/Header";
-import Footer from "../components/footer/Footer";
-import AlbumCard from "../components/album/albumCard";
+import AlbumCard from "../components/album/AlbumCard";
 
 
 function Search ({ state }) {
