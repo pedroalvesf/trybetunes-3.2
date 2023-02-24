@@ -242,6 +242,17 @@ const Data = {
             primaryGenreName: "Alternative",
             releaseDate: "2002-10-22T07:00:00Z",
             trackCount: 17,
+        },
+        {
+            artistId: 358714030,
+            artistName: "Imagine Dragons",
+            artworkUrl100: "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/11/7a/b8/117ab805-6811-8929-18b9-0fad7baf0c25/17UMGIM98210.rgb.jpg/100x100bb.jpg",
+            collectionId: 1437948883,
+            collectionName: "Origins (Deluxe)",
+            collectionPrice: 11.99,
+            primaryGenreName: "Alternative",
+            releaseDate: "2018-11-09T08:00:00Z",
+            trackCount: 16,
         }
     ],
 };

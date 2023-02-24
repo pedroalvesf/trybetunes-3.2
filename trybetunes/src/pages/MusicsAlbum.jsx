@@ -20,11 +20,9 @@ function MusicsAlbum(props) {
         img.src = musics[0].artworkUrl100;
     }
 
-console.log(backgroundColor);
     const getMcs = async () => {
         const musics2 = await getMusics(id);
         setMusics(musics2);
-        console.log(musics2);
     }
     useEffect(() => {
         getMcs()

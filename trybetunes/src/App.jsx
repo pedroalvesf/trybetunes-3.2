@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import { useState } from 'react'
 import MusicsAlbum from './pages/MusicsAlbum'
+import Search from './pages/Search'
 function App() {
 
   const [state, setState] = useState([]);
@@ -13,9 +14,9 @@ function App() {
         <BrowserRouter>
           <Header setState={setState}/>
           <Routes>
-            <Route path="/" element={<Home state={state} />} />
+            <Route path="/" element={<Home/>} />
             <Route path="/album/:id" element={<MusicsAlbum state={state}/>} />
-            <Route path="album/:id" element={<MusicsAlbum />} />
+            <Route path="/search" element={<Search state={state} />} />
           </Routes>
         </BrowserRouter>
   )

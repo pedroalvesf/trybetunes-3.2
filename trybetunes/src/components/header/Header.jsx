@@ -1,11 +1,11 @@
 import avatarTest from '/Users/pedro.alves.hf/Documents/trybetunes-3.2/trybetunes/src/assets/luffyAvatar.jpeg'
 import { SidebarData } from '../navbar/NavbarData';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import searchAlbumsAPI from "/Users/pedro.alves.hf/Documents/trybetunes-3.2/trybetunes/src/services/searchAlbumApi.js";
 import { useEffect, useState } from "react";
 
 function Header({ setState }) {
-
+  const navigate = useNavigate();
   const [artistName, setArtistName] = useState('');
   const handleChange = ({ target }) => {
     setArtistName(target.value);
@@ -16,6 +16,7 @@ function Header({ setState }) {
     const newArtist = await searchAlbumsAPI(artistName);
     setState(newArtist);
     setArtistName('');
+    navigate('/search');
   };
 
   return (
@@ -72,7 +73,7 @@ function Header({ setState }) {
             <div className="
             navbar-center
             ">
-              <a className="btn btn-ghost normal-case text-xl ">Trybetunes</a>
+              <Link to='/' className="btn btn-ghost normal-case text-xl ">Trybetunes</Link>
             </div>
             <div className="gap-2
             flex
