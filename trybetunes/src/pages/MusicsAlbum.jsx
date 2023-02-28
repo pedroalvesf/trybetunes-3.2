@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import getMusics from "../services/musicsApi";
+import {getMusics, getAlbumsByGenre} from "../services/musicsApi";
 import ColorThief from "colorthief";
-import Data from "../assets/Data";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -11,10 +10,11 @@ import { Navigation, Pagination } from "swiper";
 import { useNavigate } from "react-router-dom";
 import AlbumCard from "../components/album/AlbumCard";
 
-function MusicsAlbum(props) {
+function MusicsAlbum() {
     const navigate = useNavigate();
     const { id } = useParams();
     const [musics, setMusics] = useState([]);
+    const [albums, setAlbums] = useState([]);
 
     const [backgroundColor, setBackgroundColor] = useState("#101010");
 
@@ -28,11 +28,17 @@ function MusicsAlbum(props) {
         img.src = musics[0].artworkUrl100;
     }
 
+
+
     const getMcs = async () => {
+        setAlbums([]);
         const musics2 = await getMusics(id);
         setMusics(musics2);
+        const albumsTips = await getAlbumsByGenre(musics2[1]?.primaryGenreName);
+        console.log(musics2[1])
+        console.log(albumsTips);
+        setAlbums(albumsTips);
     }
-    console.log(id)
     useEffect(() => {
         getMcs()
     }, [id])
@@ -77,6 +83,8 @@ function MusicsAlbum(props) {
                     flex-col
                     justify-evenly
                     flex-start
+                    truncate
+                    max-w-[50%]
                     ">
                         <p
                         >Album</p>
@@ -84,9 +92,14 @@ function MusicsAlbum(props) {
                         className="
                         md:text-4xl
                         sm:text-2xl
+                        truncate
                         "
                         >{musics[0]?.collectionName}</h1>
-                        <p>{musics[0]?.artistName} - {musics[0]?.trackCount}</p>
+                        <p
+                        className="
+                        truncate
+                        "
+                        >{musics[0]?.artistName} - {musics[0]?.trackCount}</p>
                     </div>
                 </div>
                 </div>
@@ -101,11 +114,19 @@ function MusicsAlbum(props) {
                     flex
                     flex-row
                     gap-5
-                    pl-10
+                    pl-15
                     pr-5
                     ">
-                        <p>#</p>
-                        <p>Title</p>
+                        <p
+                        className="
+                        pl-1
+                        "
+                        >#</p>
+                        <p
+                        className="
+                        pl-1
+                        "
+                        >Title</p>
                     </div>
                     {musics.slice(1).map((music, index) =>(
                         <div
@@ -113,8 +134,6 @@ function MusicsAlbum(props) {
                         className="
                         flex
                         flex-row
-                        pl-10
-                        pr-5
                         gap-5
                         text-white
                         hover:bg-[#181818]/100
@@ -135,7 +154,7 @@ function MusicsAlbum(props) {
                             <p
                             className="
                             truncate
-                            max-w-[200px]
+                            w-[200px]
                             "
                             >{music.trackName}</p>
                             <p className="
@@ -188,7 +207,7 @@ function MusicsAlbum(props) {
             style={{ "--swiper-navigation-color": "#fff", "--swiper-pagination-color": "#fff" }}
             modules={[Pagination]}
             >
-            {Data.SimilarData.map((album, index) => (
+            {albums.map((album, index) => (
                 <SwiperSlide
                 key={album.collectionId + index}
                 className="
